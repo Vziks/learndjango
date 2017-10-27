@@ -15,10 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from django.views.generic.base import TemplateView
 
 urlpatterns = [
-    url(r'^news/', include('news.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^article/', include('article.urls')),
     url(r'^', include('home.urls')),
 ]
