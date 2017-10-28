@@ -9,7 +9,7 @@ from django.utils.safestring import mark_safe
 
 class Article(models.Model):
     title = models.CharField(max_length=255)
-    pub_date = models.DateTimeField('date published')
+    pub_date = models.DateTimeField(null=True)
     summary = models.TextField(null=True)
     shortSummary = models.TextField(null=True)
     content = models.TextField(null=True)
@@ -27,13 +27,20 @@ class Article(models.Model):
         null=True,
         blank=True
     )
-    height = models.IntegerField(blank=True, null=True)
-    width = models.IntegerField(blank=True, null=True)
     def __unicode__(self):
        return 'Article: ' + self.title
 
+    def __str__(self):
+        return 'Article: ' + self.title
+
     def image_tag(self):
         # used in the admin site model as a "thumbnail"
-        return mark_safe('<img src="/media/{}" width="150" height="150" />'.format(self.image) )
+        return mark_safe('<img src="/static/media/{}" width="150" height="150" />'.format(self.image) )
 
     image_tag.short_description = 'Image'
+
+    def summary_image_tag(self):
+        # used in the admin site model as a "thumbnail"
+        return mark_safe('<img src="/static/media/{}" width="150" height="150" />'.format(self.summaryImage) )
+
+    summary_image_tag.short_description = 'ImageSum'
