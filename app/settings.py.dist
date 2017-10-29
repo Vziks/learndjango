@@ -24,9 +24,10 @@ SECRET_KEY = 'sbzjoqo$=78^wx6fbml9e2s3ixskab44+6rz!@ccd4&szey*i='
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-# DEBUG = False
+DEBUG = False
 
 ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -54,10 +55,17 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'app.urls'
 
+SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
+
+# print(SETTINGS_PATH)
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(SETTINGS_PATH, 'templates'),
+            # '/home/anton/PycharmProjects/learndjango/app/templates'
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -138,12 +146,36 @@ PROJECT_DIR = '/home/anton/PycharmProjects/learndjango/'
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = 'static/media/'
+# MEDIA_URL = '/media/'
 
-# STATIC_URL = '/home/anton/PycharmProjects/learndjango/static/'
+STATIC_ROOT = '/home/anton/PycharmProjects/learndjango/'
+
+# MEDIA_ROOT = '/home/anton/PycharmProjects/learndjango/'
+
+
+# MEDIA_URL = 'static/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR,os.pardir,'media')
+
+BASE_DIR = os.path.realpath(os.path.dirname(__file__))
+
+_PATH = os.path.realpath(os.path.dirname(__file__))
+MEDIA_ROOT = os.path.join(PROJECT_DIR, 'uploads/media')
+# MEDIA_ROOT = os.path.join(STATIC_URL,os.pardir,'media')
+
+MEDIA_URL = '/uploads/media/'
+
+
+# MEDIA_URL = '/media/'
+# MEDIA_URL = '/static/media/'
+# MEDIA_ROOT = os.path.join(STATIC_URL,os.pardir,'media')
+
+# Additional locations of static files
+# STATICFILES_DIRS = (
+#     os.path.join(PROJECT_DIR, 'static'),
+    # os.path.join(PROJECT_DIR, 'static/media'),
+# )
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_DIR, 'static'),
-    os.path.join(PROJECT_DIR, 'media'),
+    '/home/anton/PycharmProjects/learndjango/static/',
 )

@@ -15,9 +15,24 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.conf import settings
+from home import views as main_views
+from django.conf.urls.static import static
+# from django.conf.urls.defaults import handler404, handler500
+# from django.conf.urls import (
+#     handler404, handler500
+# )
+from django.conf.urls import handler404
+
+# if settings.DEBUG:
+#     urlpatterns.append(url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}))
 
 urlpatterns = [
+    # url(r'^media/(?P<path>.*)$', 'django.views.static.serve',{'document_root': settings.MEDIA_ROOT, 'show_indexes': False}),
     url(r'^admin/', admin.site.urls),
     url(r'^article/', include('article.urls')),
-    url(r'^', include('home.urls')),
-]
+    url(r'^', include('home.urls', namespace='home')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+handler404 = main_views.error_404
+# handler500 = main_views.error_500

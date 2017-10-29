@@ -27,6 +27,7 @@ class Article(models.Model):
         null=True,
         blank=True
     )
+
     def __unicode__(self):
        return 'Article: ' + self.title
 
@@ -35,12 +36,12 @@ class Article(models.Model):
 
     def image_tag(self):
         # used in the admin site model as a "thumbnail"
-        return mark_safe('<img src="/static/media/{}" width="150" height="150" />'.format(self.image) )
+        return mark_safe('<img src="/uploads/media/{}" width="150" height="150" />'.format(self.image) )
 
     image_tag.short_description = 'Image'
 
     def summary_image_tag(self):
         # used in the admin site model as a "thumbnail"
-        return mark_safe('<img src="/static/media/{}" width="150" height="150" />'.format(self.summaryImage) )
+        return mark_safe('<img src="/uploads/media/{}" width="150" height="150" />'.format(self.summaryImage) )
 
     summary_image_tag.short_description = 'ImageSum'
