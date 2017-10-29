@@ -28,11 +28,10 @@ from django.conf.urls import handler404
 #     urlpatterns.append(url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}))
 
 urlpatterns = [
-    # url(r'^media/(?P<path>.*)$', 'django.views.static.serve',{'document_root': settings.MEDIA_ROOT, 'show_indexes': False}),
     url(r'^admin/', admin.site.urls),
     url(r'^article/', include('article.urls')),
     url(r'^', include('home.urls', namespace='home')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-handler404 = main_views.error_404
+# handler404 = main_views.error_404
 # handler500 = main_views.error_500
