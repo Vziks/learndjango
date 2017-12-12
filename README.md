@@ -11,7 +11,7 @@ $ python manage.py runserver 8080
 
 $ python manage.py collectstatic
 
-# Dump all static file here to this folder
+#### Dump all static file here to this folder
 
 #### Example
 STATIC_ROOT = '/home/user/prodhub/django/app/collectstatic'

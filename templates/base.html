@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+        <script type="text/javascript">
+            if (self == top) {
+                document.documentElement.style.display = 'block';
+            } else {
+                top.location = self.location;
+            }
+        </script>
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

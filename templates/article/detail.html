@@ -1,6 +1,9 @@
+{% extends 'base.html' %}
+{% block body %}
 {% load static %}
-
-<link rel="stylesheet" type="text/css" href="{% static 'article/style.css' %}" />
-
-<h1>{{ article.question_text }} - {{ article.pub_date}}</h1>
-<h2>{{ article.summary }}</h2>
+<link rel="stylesheet" type="text/css" href="{% static 'article/style.css' %}"/>
+<article>
+    <h1>{{ article.title }}</h1>
+    <p>{{ article.content|safe }}</p>
+</article>
+{% endblock %}

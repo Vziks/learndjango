@@ -7,12 +7,25 @@ from django.utils.safestring import mark_safe
 
 # Create your models here.
 
+class Section(models.Model):
+    class Meta:
+        db_table = 'section'
+    section_title = models.CharField(max_length=200)
+    section_url = models.CharField(max_length=50)
+    section_description = models.TextField()
+
+    def __str__(self):
+        return self.section_title
+
 class Article(models.Model):
+    class Meta:
+        db_table = 'article'
     title = models.CharField(max_length=255)
     pub_date = models.DateTimeField(null=True)
     summary = models.TextField(null=True)
     shortSummary = models.TextField(null=True)
     content = models.TextField(null=True)
+    section = models.ForeignKey(Section, null=True, blank=True)
     image = models.ImageField(
         'description of purpose',
         upload_to='%Y/%m/%d/',

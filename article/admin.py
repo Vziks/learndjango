@@ -5,11 +5,13 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Article
+from .models import Article,Section
 
 class ArticleAdmin(admin.ModelAdmin):
     # explicitly reference fields to be shown, note image_tag is read-only
     # fields = ( 'image_tag','title','description','image','externalURL', )
     readonly_fields = ('image_tag','summary_image_tag')
 
-admin.site.register(Article, ArticleAdmin)
+
+admin.site.register(Article)
+admin.site.register(Section)

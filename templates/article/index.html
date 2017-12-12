@@ -1,20 +1,15 @@
-{% load static %}
-
-
-
-<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
-
-<!--<link rel="stylesheet" type="text/css" href="{% static 'article/style.css' %}" />-->
-
-
-<!--<img src="{% static 'default/small-fundraising-heart.png' %}" alt="My image"/>-->
-
-{% if latest_article_list %}
-    <ul>
-    {% for article in latest_article_list %}
-        <li><a href="{% url 'article:detail' article.id %}">{{ article.title }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No article are available.</p>
-{% endif %}
+{% extends 'base.html' %}
+{% block body %}
+    <article>
+    <h3>Разделы</h3>
+    {% if section_list %}
+        <ul>
+        {% for section in section_list %}
+            <li>
+            <a href="{% url 'article:section' section.section_url %}">{{ section.section_title }}</a>
+            </li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    </article>
+{% endblock %}
