@@ -24,10 +24,10 @@ SECRET_KEY = 'sbzjoqo$=78^wx6fbml9e2s3ixskab44+6rz!@ccd4&szey*i='
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-DEBUG = False
+# DEBUG = False
 
 ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ["*"]
+# ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -142,40 +142,24 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-PROJECT_DIR = '/home/anton/PycharmProjects/learndjango/'
+PROJECT_DIR = '/home/user/prodhub/django/'
 
 STATIC_URL = '/static/'
 
-# MEDIA_URL = '/media/'
+# Dump all static file here to this folder
+# deploy command
+# python manage.py collectstatic
+STATIC_ROOT = '/home/user/prodhub/django/app/collectstatic'
 
-STATIC_ROOT = '/home/anton/PycharmProjects/learndjango/'
-
-# MEDIA_ROOT = '/home/anton/PycharmProjects/learndjango/'
-
-
-# MEDIA_URL = 'static/media/'
-# MEDIA_ROOT = os.path.join(BASE_DIR,os.pardir,'media')
 
 BASE_DIR = os.path.realpath(os.path.dirname(__file__))
 
 _PATH = os.path.realpath(os.path.dirname(__file__))
 MEDIA_ROOT = os.path.join(PROJECT_DIR, 'uploads/media')
-# MEDIA_ROOT = os.path.join(STATIC_URL,os.pardir,'media')
-
 MEDIA_URL = '/uploads/media/'
 
-
-# MEDIA_URL = '/media/'
-# MEDIA_URL = '/static/media/'
-# MEDIA_ROOT = os.path.join(STATIC_URL,os.pardir,'media')
-
-# Additional locations of static files
-# STATICFILES_DIRS = (
-#     os.path.join(PROJECT_DIR, 'static'),
-    # os.path.join(PROJECT_DIR, 'static/media'),
-# )
-
-# Additional locations of static files
-STATICFILES_DIRS = (
-    '/home/anton/PycharmProjects/learndjango/static/',
-)
+#
+STATICFILES_DIRS = [
+    #collect all file form folders python manage.py collectstatic
+    os.path.join(BASE_DIR, "static"),
+]
