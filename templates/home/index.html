@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block header %}
+<header>
+    {% load i18n %}
+    <h1>{% trans "Hello world!" %}</h1>
+    <h1>Django version is {{ django_version }}</h1>
+</header>
+{% endblock %}
+{% block body %}
+   Content
+{% endblock %}

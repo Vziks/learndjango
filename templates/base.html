@@ -1,21 +1,52 @@
 <!DOCTYPE html>
 {% load static %}
+{% load i18n %}
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
-        <script type="text/javascript">
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+    <script type="text/javascript">
             if (self == top) {
                 document.documentElement.style.display = 'block';
             } else {
                 top.location = self.location;
             }
-        </script>
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+
+    </script>
+    <style type="text/css">
+		body{margin: 0 auto;width: 80%}
+		body > header{text-align: center;margin: 20px 0;}
+		body > footer{text-align: right;}
+		article{margin: 10px 0;border: solid thin #dadada;padding: 10px}
+		.b{border:solid thin gray;}
+
+    </style>
+</head>
+<body>
+    {% block header %}{% endblock %}
+<div class="">
+    {% block body %}{% endblock %}
+</div>
+
+<footer>
+{% load i18n %}
+<form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+    <input name="next" type="hidden" value="{{ redirect_to }}" />
+    <select name="language">
+        {% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as LANGUAGES %}
+        {% get_language_info_list for LANGUAGES as languages %}
+        {% for language in languages %}
+            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                {{ language.name_local }} ({{ language.code }})
+            </option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Go" />
+</form>
+</footer>
+
+</body>
 </html>

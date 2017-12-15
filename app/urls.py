@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """app URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -18,11 +19,12 @@ from django.contrib import admin
 from django.conf import settings
 from home import views as main_views
 from django.conf.urls.static import static
+from django.conf.urls.i18n import i18n_patterns
 # from django.conf.urls.defaults import handler404, handler500
 # from django.conf.urls import (
 #     handler404, handler500
 # )
-from django.conf.urls import handler404
+# from django.conf.urls import handler404
 
 # if settings.DEBUG:
 #     urlpatterns.append(url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}))
@@ -31,7 +33,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^article/', include('article.urls')),
     url(r'^', include('home.urls', namespace='home')),
+    url(r'^i18n/', include('django.conf.urls.i18n')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-# handler404 = main_views.error_404
-# handler500 = main_views.error_500
+handler404 = 'app.views.handler404'
+handler500 = 'app.views.handler500'

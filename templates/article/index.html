@@ -2,6 +2,8 @@
 {% block body %}
     <article>
     <h3>Разделы</h3>
+
+        {{ section_list_ }}
     {% if section_list %}
         <ul>
         {% for section in section_list %}

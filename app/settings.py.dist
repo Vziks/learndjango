@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 
+
+
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -23,11 +26,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'sbzjoqo$=78^wx6fbml9e2s3ixskab44+6rz!@ccd4&szey*i='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = False
+# DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
-# ALLOWED_HOSTS = ["*"]
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -51,7 +54,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'app.middleware.HeaderMiddleware',
 ]
+#
+# TEMPLATE_LOADERS = [
+#     'django.template.loaders.filesystem.Loader',
+#     'django.template.loaders.app_directories.Loader',
+# ]
 
 ROOT_URLCONF = 'app.urls'
 
@@ -100,9 +110,9 @@ WSGI_APPLICATION = 'app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django',
+        'NAME': 'dj',
         'USER': 'root',
-        'PASSWORD': '123',
+        'PASSWORD': '123'
     }
 }
 
@@ -129,15 +139,24 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
 
+
+# LANGUAGE_CODE = 'ru-RU'
+# LANGUAGE_CODE = 'ru-RU'
+
+DEFAULT_CHARSET = 'utf-8'
 USE_I18N = True
-
+TIME_ZONE = 'Europe/Moscow'
 USE_L10N = True
-
 USE_TZ = True
+#
+#
+#
+# LANGUAGES = (
+#     ('en', ugettext('English')),
+#     ('ru', ugettext('Russian')),
+# )
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
@@ -149,7 +168,7 @@ STATIC_URL = '/static/'
 # Dump all static file here to this folder
 # deploy command
 # python manage.py collectstatic
-STATIC_ROOT = '/home/user/prodhub/django/app/collectstatic'
+STATIC_ROOT = '/home/user/prodhub/django/app/static'
 
 
 BASE_DIR = os.path.realpath(os.path.dirname(__file__))
@@ -163,3 +182,21 @@ STATICFILES_DIRS = [
     #collect all file form folders python manage.py collectstatic
     os.path.join(BASE_DIR, "static"),
 ]
+
+LANGUAGE_CODE = 'ru'
+
+ugettext = lambda s: s
+
+LANGUAGES = (
+  ('ru', ugettext('Russian')),
+)
+
+PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
+
+# PROJECT_ROOT
+
+print(PROJECT_ROOT)
+print(BASE_DIR)
+
+LOCALE_PATHS = (os.path.join(BASE_DIR, '../locale'), )
+

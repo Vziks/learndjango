@@ -12,6 +12,5 @@ class ArticleAdmin(admin.ModelAdmin):
     # fields = ( 'image_tag','title','description','image','externalURL', )
     readonly_fields = ('image_tag','summary_image_tag')
 
-
 admin.site.register(Article)
 admin.site.register(Section)
