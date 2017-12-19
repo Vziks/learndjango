@@ -9,6 +9,8 @@ pip install django-rest-swagger
 
 pip install djangorestframework
 
+pip install django-extensions
+
 ### Doc
 
 1) Run server

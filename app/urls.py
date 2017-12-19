@@ -17,18 +17,18 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf import settings
-from home import views as main_views
+# from home import views as main_views
 from django.conf.urls.static import static
 from rest_framework_swagger.views import get_swagger_view
 
-schema_view = get_swagger_view(title='API')
+schema_view = get_swagger_view(title='Vziks API')
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^api/', include('api.urls', namespace='api')),
     url(r'^api-console/', schema_view),
-    url(r'^article/', include('article.urls')),
+    url(r'^article/', include('article.urls', namespace='article')),
     url(r'^', include('home.urls', namespace='home')),
     url(r'^i18n/', include('django.conf.urls.i18n')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

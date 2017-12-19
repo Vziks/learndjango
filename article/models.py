@@ -20,7 +20,7 @@ class Section(models.Model):
         return self.section_title
 
     def __unicode__(self):
-       return self.section_title
+        return '%s' % (self.section_title)
 
 class Article(models.Model):
     class Meta:
@@ -31,7 +31,7 @@ class Article(models.Model):
     pub_date = models.DateTimeField(null=True, verbose_name = _('pudDate'))
     summary = models.TextField(null=True, verbose_name = _('summary'))
     content = models.TextField(null=True, verbose_name = _('content'))
-    section = models.ForeignKey(Section, null=True, blank=True, verbose_name = _('section'))
+    section = models.ForeignKey(Section, related_name='section', on_delete=models.CASCADE, null=True, blank=True, verbose_name = _('section'))
     image = models.ImageField(
         _('image'),
         upload_to='%Y/%m/%d/',
