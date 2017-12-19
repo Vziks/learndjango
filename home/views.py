@@ -11,18 +11,3 @@ def index(request):
     django_version = django.VERSION
     context = {'django_version': django_version}
     return HttpResponse(template.render(context, request))
-
-def error_404(request):
-    template = loader.get_template('error_404.html')
-    context = Context({
-        'message': 'All: %s' % request,
-    })
-    return HttpResponse(content=template.render(context), content_type='text/html; charset=utf-8', status=404)
-
-
-def error_500(request):
-    template = loader.get_template('error_500.html')
-    context = Context({
-        'message': 'All: %s' % request,
-    })
-    return HttpResponse(content=template.render(context), content_type='text/html; charset=utf-8', status=500)

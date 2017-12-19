@@ -28,11 +28,11 @@ class DetailsArticleView(viewsets.ModelViewSet):
     queryset = ArticleModels.Article.objects.all()
     serializer_class = ArticleSerializer
 
-class SelectionViewSet(viewsets.ModelViewSet):
-    queryset = ArticleModels.Section.objects.all()
-    serializer_class = SectionSerializer
+# class SelectionViewSet(viewsets.ModelViewSet):
+#     queryset = ArticleModels.Section.objects.all()
+#     serializer_class = SectionSerializer
 
-class DetailsSectionView(viewsets.ModelViewSet):
-    """This class handles the http GET, PUT and DELETE requests."""
+# class DetailsSectionView(viewsets.ModelViewSet):
+#     """This class handles the http GET, PUT and DELETE requests."""
     queryset = ArticleModels.Section.objects.all()
     serializer_class = SectionSerializer

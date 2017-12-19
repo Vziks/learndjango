@@ -1,6 +1,14 @@
 Django
 ========================
 
+### Installs
+
+pip install django-query-builder
+
+pip install django-rest-swagger
+
+pip install djangorestframework
+
 ### Doc
 
 1) Run server
@@ -24,3 +32,4 @@ STATICFILES_DIRS = [
 
 3) Миграции
 $ python manage.py migrate
+
