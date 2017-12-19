@@ -26,11 +26,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'sbzjoqo$=78^wx6fbml9e2s3ixskab44+6rz!@ccd4&szey*i='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = False
+DEBUG = True
+# DEBUG = False
 
-# ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -38,12 +38,14 @@ ALLOWED_HOSTS = ["*"]
 INSTALLED_APPS = [
     'home',
     'article.apps.ArticleConfig',
+    'api.apps.ApiConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -57,6 +59,11 @@ MIDDLEWARE = [
     'django.middleware.locale.LocaleMiddleware',
     'app.middleware.HeaderMiddleware',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 10
+}
 #
 # TEMPLATE_LOADERS = [
 #     'django.template.loaders.filesystem.Loader',
@@ -87,6 +94,8 @@ TEMPLATES = [
         },
     },
 ]
+
+LOGIN_REDIRECT_URL = '/'
 
 WSGI_APPLICATION = 'app.wsgi.application'
 

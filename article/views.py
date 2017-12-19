@@ -5,8 +5,10 @@ from django.http import HttpResponse, Http404
 from django.shortcuts import render
 from django.template import loader
 from querybuilder.query import Query
+from rest_framework import viewsets
+from .models import Article, Section
+from .serializers import ArticleSerializer, SectionSerializer
 
-from .models import Article,Section
 from pprint import pprint
 
 # loader
@@ -36,3 +38,14 @@ def detail(request, section, article_id):
     except Article.DoesNotExist:
         raise Http404("Question does not exist")
     return render(request, 'article/detail.html', {'article': article})
+
+
+#/api/
+
+class ArticleViewSet(viewsets.ModelViewSet):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+
+class SectionViewSet(viewsets.ModelViewSet):
+    queryset = Section.objects.all()
+    serializer_class = SectionSerializer
