@@ -4,6 +4,8 @@
 <link rel="stylesheet" type="text/css" href="{% static 'article/style.css' %}"/>
 <article>
     <h1>{{ article.title }}</h1>
+    {% load imagekit %}
+    {% thumbnail '150x150' article.image %}
     <p>{{ article.content|safe }}</p>
 </article>
 {% endblock %}

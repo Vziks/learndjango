@@ -21,4 +21,5 @@ class ArticleSerializer(serializers.HyperlinkedModelSerializer):
     section = SectionSerializer(read_only=True)
     class Meta:
         model = ArticleModels.Article
-        fields = ('url', 'title', 'content', 'section')
+        # fields = ('url', 'title', 'content', 'section')
+        exclude = ()

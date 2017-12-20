@@ -45,9 +45,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
-    'rest_framework_swagger',
-    'django_extensions',
+    'rest_framework', ##http://www.django-rest-framework.org/
+    'rest_framework_swagger', ##https://django-rest-swagger.readthedocs.io/en/latest/
+    'django_extensions', ##https://django-extensions.readthedocs.io/en/latest/
+    'imagekit', ##https://pypi.python.org/pypi/django-imagekit
 ]
 
 MIDDLEWARE = [
@@ -96,6 +97,10 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'libraries':{
+                'app_extras': 'app.templatetags.app_extras',
+
+            }
         },
     },
 ]
@@ -209,8 +214,8 @@ PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
 
 # PROJECT_ROOT
 
-print(PROJECT_ROOT)
-print(BASE_DIR)
+# print(PROJECT_ROOT)
+# print(BASE_DIR)
 
 LOCALE_PATHS = (os.path.join(BASE_DIR, '../locale'), )
 
