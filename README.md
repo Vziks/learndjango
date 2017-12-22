@@ -3,13 +3,7 @@ Django
 
 ### Installs
 
-pip install django-query-builder
-
-pip install django-rest-swagger
-
-pip install djangorestframework
-
-pip install django-extensions
+pip install -r requirements.txt
 
 ### Doc
 
@@ -33,5 +27,13 @@ STATICFILES_DIRS = [
 ]
 
 3) Миграции
+
+Создание
+$ python manage.py makemigrations
+Миграция
 $ python manage.py migrate
+
+4) Создание админа
+
+$ python manage.py createsuperuser
 
